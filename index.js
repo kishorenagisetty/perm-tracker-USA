@@ -27,7 +27,7 @@ async function scrapeImmilane() {
     };
 
     return {
-      dolMonth: match(/DOL HERE\s*([A-Za-z]+ '[0-9]{2})/),
+      dolMonth: match(/DOL HERE\s*\n?\s*([A-Za-z]+\s*'[0-9]{2})/i) || match(/Currently Processing\s*\n?\s*([A-Za-z]+\s*'[0-9]{2})/i) || match(/([A-Za-z]{3}\s*'[0-9]{2})/),
       backlog: match(/TOTAL BACKLOG[\s\S]{0,100}?([\d,]{5,})/),
       avgDays: match(/AVG PROCESSING DAYS[\s\S]{0,100}?(\d{3,4})/),
       processed: match(/Processed\s+([\d,]+)/),
