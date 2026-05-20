@@ -1,0 +1,12 @@
+services:
+  - type: cron
+    name: perm-tracker
+    env: node
+    schedule: "0 9 * * 1"
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: EMAIL_FROM
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
