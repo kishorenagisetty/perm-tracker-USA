@@ -24,14 +24,7 @@ async function scrapeImmilane() {
     };
 
     // Try multiple patterns for DOL month
-    const dolMonth =
-      match(/March\s*[-–]\s*(\d+%)/) !== 'N/A' ? 'March' :
-      match(/April\s*[-–]\s*(\d+%)/) !== 'N/A' ? 'April' :
-      match(/January\s*[-–]\s*(\d+%)/) !== 'N/A' ? 'January' :
-      match(/February\s*[-–]\s*(\d+%)/) !== 'N/A' ? 'February' :
-      match(/May\s*[-–]\s*(\d+%)/) !== 'N/A' ? 'May' :
-      match(/June\s*[-–]\s*(\d+%)/) !== 'N/A' ? 'June' :
-      match(/([A-Z][a-z]+ '[0-9]{2})/) ;
+      const dolMonth = match(/DOL CURRENTLY PROCESSING[\s\S]{0,100}?([A-Z][a-z]{2,8}\s+'[0-9]{2})/i);
 
     return {
       dolMonth: dolMonth,
